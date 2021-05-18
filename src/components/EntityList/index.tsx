@@ -14,8 +14,8 @@ class EntityList extends React.Component {
             <SafeAreaView style={styles.container}>
                 {(this.props.entities.length > 0) ?
                     <ScrollView>
-                        {this.props.entities.map(e => <ListItem
-                            key={e.Title}
+                        {this.props.entities.map((e, i) => <ListItem
+                            key={e.Title + i}
                             bottomDivider
                         >
                             <Avatar
