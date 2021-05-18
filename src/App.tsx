@@ -1,14 +1,13 @@
 import React from 'react';
 
 import AppContainer from './AppContainer';
-import reducers from './reducers';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import store from './state/store';
 
 class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <AppContainer />
       </Provider>
     );

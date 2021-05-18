@@ -1,0 +1,3 @@
+export enum ENITY_LIST_ACTION_TYPES {
+    ADD_ENTITY='ADD_ENTITY'
+}

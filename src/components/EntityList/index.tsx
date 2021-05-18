@@ -2,9 +2,14 @@ import React from 'react';
 import { ScrollView, SafeAreaView, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { EntityListState } from '../../state/types';
 import styles from './style';
 
-class EntityList extends React.Component {
+interface IProps {
+    entities: EntityListState
+};
+
+class EntityList extends React.Component<IProps> {
     constructor(props) {
         super(props);
     }
@@ -31,7 +36,10 @@ class EntityList extends React.Component {
                         )}
                     </ScrollView>
                     :
-                    <Text>No Entities in the list.</Text>
+                    <>
+                        <Text style={styles.alertTitle}>No Entities in the list</Text>
+                        <Text  style={styles.alertSubtitle}>Use the button to add entities to the list</Text>
+                    </>
                 }
             </SafeAreaView>
         );
