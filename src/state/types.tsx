@@ -3,6 +3,7 @@ import { ENITY_LIST_ACTION_TYPES } from './actions';
 export type Entity = {
     Title: string;
     Subtitle: string;
+    id: string;
 }
 
 export type EntityListState = Entity[];

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
 import { connect } from 'react-redux';
+import uuid from 'react-native-uuid';
 
 import AddModal from '../AddModal';
 import { EntityListState } from '../../state/types';
@@ -15,6 +16,7 @@ interface IProps {
     addnew: (payload) => void
 }
 
+//possible action buttons
 const actions = [
     {
         text: "Add New Entity",
@@ -34,14 +36,15 @@ class AddButton extends React.Component<IProps, IState> {
     constructor(props) {
         super(props);
 
-        this.handleBtnClick = this.handleBtnClick.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
 
         this.state = {
             modalVisible: false
         }
     }
 
-    handleBtnClick(name) {
+    //handle action button click
+    handleButtonClick(name) {
         if (name === "bt_copy" && this.props.entities.length > 0) {
             let randomEntity = this.props.entities[Math.floor(Math.random() * this.props.entities.length)];
             this.props.addnew({
@@ -54,6 +57,7 @@ class AddButton extends React.Component<IProps, IState> {
         }
     }
 
+    //handle adding a new entity to the list/reducer
     handleAdd(title, subtitle) {
         if(!title){
             return;
@@ -61,7 +65,8 @@ class AddButton extends React.Component<IProps, IState> {
         
         this.props.addnew({
             Title: title,
-            Subtitle: subtitle
+            Subtitle: subtitle,
+            id: uuid.v4()
         });
         this.setState({modalVisible: false})
     }
@@ -71,7 +76,7 @@ class AddButton extends React.Component<IProps, IState> {
             <>
                 <FloatingAction
                     actions={actions}
-                    onPressItem={this.handleBtnClick}
+                    onPressItem={this.handleButtonClick}
                     color='#00c36d'
                 />
                 <AddModal 

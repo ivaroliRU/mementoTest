@@ -2,21 +2,38 @@ import React from 'react';
 import { ScrollView, SafeAreaView, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { EntityListState } from '../../state/types';
+import { EntityListState, Entity } from '../../state/types';
 import styles from './style';
+
+import EntityModal from '../EntityModal';
 
 interface IProps {
     entities: EntityListState
 };
 
-class EntityList extends React.Component<IProps> {
+interface IState {
+    modalVisible: boolean
+    selectedEntity: Entity 
+};
+
+class EntityList extends React.Component<IProps, IState> {
     constructor(props) {
         super(props);
+
+        this.state = {
+            modalVisible: false,
+            selectedEntity: undefined
+        }
     }
 
     render() {
         return (
             <SafeAreaView style={styles.container}>
+                <EntityModal
+                    isVisisble={this.state.modalVisible}
+                    entity={this.state.selectedEntity}
+                    toggleModal={() => {this.setState({modalVisible: false})}}
+                />
                 {(this.props.entities.length > 0) ?
                     <ScrollView>
                         {this.props.entities.map((e, i) => <ListItem
