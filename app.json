@@ -1,0 +1,12 @@
+{
+  "name": "mementoTest",
+  "displayName": "mementoTest",
+  "expo": {
+    "name": "mementoTest",
+    "slug": "mementoTest",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
