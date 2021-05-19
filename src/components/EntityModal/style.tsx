@@ -9,9 +9,13 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         borderRadius: 5
     },
-    input: {
+    title: {
+        fontSize: 16,
+        marginTop: 20
+    },
+    subtitle: {
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 20
     },
     buttonContainer: {
         flexDirection:'row', 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, SafeAreaView, Text } from 'react-native';
+import { ScrollView, SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { EntityListState, Entity } from '../../state/types';
@@ -13,7 +13,7 @@ interface IProps {
 
 interface IState {
     modalVisible: boolean
-    selectedEntity: Entity 
+    selectedEntity: Entity
 };
 
 class EntityList extends React.Component<IProps, IState> {
@@ -32,30 +32,33 @@ class EntityList extends React.Component<IProps, IState> {
                 <EntityModal
                     isVisisble={this.state.modalVisible}
                     entity={this.state.selectedEntity}
-                    toggleModal={() => {this.setState({modalVisible: false})}}
+                    toggleModal={() => { this.setState({ modalVisible: false }) }}
                 />
                 {(this.props.entities.length > 0) ?
                     <ScrollView>
-                        {this.props.entities.map((e, i) => <ListItem
-                            key={e.Title + i}
-                            bottomDivider
-                        >
-                            <Avatar
-                                rounded
-                                source={{ uri: "foo.jpg" }}
-                                title={e.Title[0]}
-                            />
-                            <ListItem.Content>
-                                <ListItem.Title>{e.Title}</ListItem.Title>
-                                <ListItem.Subtitle>{e.Subtitle}</ListItem.Subtitle>
-                            </ListItem.Content>
-                        </ListItem>
+                        {this.props.entities.map((e, i) =>
+                            <TouchableOpacity key={"entity-" + e.id} onPress={() => {this.setState({modalVisible: true, selectedEntity: e})}}>
+                                <ListItem
+                                    key={e.Title + i}
+                                    bottomDivider
+                                >
+                                    <Avatar
+                                        rounded
+                                        source={{ uri: "foo.jpg" }}
+                                        title={e.Title[0]}
+                                    />
+                                    <ListItem.Content>
+                                        <ListItem.Title>{e.Title}</ListItem.Title>
+                                        <ListItem.Subtitle>{e.Subtitle}</ListItem.Subtitle>
+                                    </ListItem.Content>
+                                </ListItem>
+                            </TouchableOpacity>
                         )}
                     </ScrollView>
                     :
                     <>
                         <Text style={styles.alertTitle}>No Entities in the list</Text>
-                        <Text  style={styles.alertSubtitle}>Use the button to add entities to the list</Text>
+                        <Text style={styles.alertSubtitle}>Use the button to add entities to the list</Text>
                     </>
                 }
             </SafeAreaView>

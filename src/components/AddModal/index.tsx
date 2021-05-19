@@ -28,24 +28,30 @@ class AddModal extends React.Component<IProps, IState> {
         return (
             <Modal isVisible={this.props.isVisisble} onBackdropPress={this.props.toggleModal}>
                 <SafeAreaView style={styles.container}>
-                    <Text>Add new entity!</Text>
+                    <Text style={styles.headerText}>Add new entity!</Text>
                     <TextInput
-                        style={styles.input}
+                        style={styles.titleInput}
                         placeholder="Title of the entity"
-                        onChangeText={(value) => {this.setState({title: value})}}
+                        onChangeText={(value) => { this.setState({ title: value }) }}
                     />
                     <TextInput
-                        style={styles.input}
+                        style={styles.subtitleInput}
                         placeholder="Subtitle of the entity"
-                        onChangeText={(value) => {this.setState({subtitle: value})}}
+                        onChangeText={(value) => { this.setState({ subtitle: value }) }}
                     />
-                    
+
                     <View style={styles.buttonContainer}>
                         <View style={styles.button}>
                             <Button title="Cancel" onPress={this.props.toggleModal} />
                         </View>
                         <View style={styles.button}>
-                            <Button title="Add" onPress={() => this.props.addEntity(this.state.title, this.state.subtitle)} />
+                            <Button title="Add" onPress={() => {
+                                this.props.addEntity(this.state.title, this.state.subtitle);
+                                this.setState({
+                                    title: "",
+                                    subtitle: ""
+                                })
+                            }} />
                         </View>
                     </View>
                 </SafeAreaView>

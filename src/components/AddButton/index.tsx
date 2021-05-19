@@ -13,7 +13,7 @@ interface IState {
 
 interface IProps {
     entities: EntityListState;
-    addnew: (payload) => void
+    addnew: (payload) => void;
 }
 
 //possible action buttons

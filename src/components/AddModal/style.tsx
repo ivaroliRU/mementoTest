@@ -2,18 +2,32 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: 'white',
         paddingBottom: 20,
         paddingTop: 20,
         borderRadius: 5
     },
-    input: {
+    headerText: {
+        fontSize: 20,
+        textAlign: 'center'
+    },
+    titleInput: {
         marginTop: 10,
-        marginBottom: 10
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomColor: 'lightgrey',
+        borderBottomWidth: 1,
+    },
+    subtitleInput: {
+        marginBottom: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomColor: 'lightgrey',
+        borderBottomWidth: 1,
     },
     buttonContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
         flexDirection:'row', 
         flexWrap:'wrap'
     },
