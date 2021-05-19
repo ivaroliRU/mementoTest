@@ -7,7 +7,7 @@ export default class Header extends React.Component {
         return (
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Entity Editor</Text>
-                <Text style={styles.headerSubtitle}>Strangely, the best app on the market?</Text>
+                <Text style={styles.headerSubtitle}>This might be the best app on the market</Text>
             </View>
         );
     }
